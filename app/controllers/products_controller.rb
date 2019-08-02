@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    Rails.logger.info "\n---- PARAMS CHECKING(product index): #{params.inspect} ----\n"
   end
 
   # GET /products/1
