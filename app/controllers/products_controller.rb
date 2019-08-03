@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    Rails.logger.info "\n---- PARAMS CHECKING(product show): #{params.inspect} ----\n"
   end
 
   # GET /products/new
