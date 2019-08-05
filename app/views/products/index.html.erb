@@ -1,27 +1,33 @@
 <p id="notice"><%= notice %></p>
-<h1>Products</h1>
 
+<h1>Products</h1>
+<% cache @products do  %>
 <table>
-  <% @products.each do |product| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+  <% @products.each do |product| %>  <!--all products caching -->
+
+    <% cache product do%>  <!--single product caching -->
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td>
         <%= image_tag(product.image_url, class: 'list_image') %>
-      </td>
-      <td class="list_description">
+        </td>
+        <td class="list_description">
         <dl>
           <dt><%= product.title %></dt>
           <dd><%= truncate(strip_tags(product.description),
                            length: 80) %></dd>
-        </dl>
-      </td>
-      <td class="list_actions">
-        <%= link_to 'Show', product %><br/>
-        <%= link_to 'Edit', edit_product_path(product) %><br/>
-        <%= link_to 'Destroy', product, method: :delete,
+           </dl>
+           </td>
+        <td class="list_actions">
+         <%= link_to 'Show', product %><br/>
+         <%= link_to 'Edit', edit_product_path(product) %><br/>
+         <%= link_to 'Destroy', product, method: :delete,
                     data: { confirm: 'Are you sure?' } %>
-      </td>
-    </tr>
+         </td>
+       </tr>
+    <% end %>
+   <% end %>
   <% end %>
 </table>
 <br />
 <%= link_to 'New product', new_product_path %>
+

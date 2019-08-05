@@ -2,7 +2,7 @@
 
 
 <div class="card">
-  <img src=" <%= @product.image_url %>" alt="Avatar" style="width:100%" class="img">
+  <img src=" <%= @product.image_url %>" alt="Avatar" style="width:100%" class="img" height="100px" width="100px">
   <div class="container">
     <h1>
       <strong>Title:</strong>
@@ -21,7 +21,7 @@
 
     <p>
       <strong>Price:</strong>
-      <%= @product.price %>
+      <%= number_to_currency(@product.price) %>
     </p>
   </div>
 </div>

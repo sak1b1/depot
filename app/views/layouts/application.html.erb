@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Depot</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <title>Some random store</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body class='<%= controller.controller_name %>'>
+<body class='<%= controller.controller_name %>' >
+<div id="banner">
+  <!--%= image_tag 'camera.png', alt: 'The Pragmatic Bookshelf' %-->
+  <span class="title"><%= @page_title %></span>
+</div>
+<div id="columns">
+  <div class="topnav">
+    <%= link_to 'Home',store_index_path  %>
+    <%= link_to 'Products',products_url  %>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+  <div id="main">
     <%= yield %>
-  </body>
+  </div>
+</div>
+</body>
 </html>
