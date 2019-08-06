@@ -1,16 +1,17 @@
 <p id="notice"><%= notice %></p>
-<h1>Your go to for things to buy</h1>
+<h1>items available</h1>
 
 <% @products.each do |product| %>
   <div class="entry">
-    <% image_tag(product.image_url) %>  <!-- equal sign removed  -->
-    <h3><% product.title %></h3>        <!-- equal sign removed  -->
+    <%= image_tag(product.image_url) %>  <!-- equal sign removed  -->
+    <h3><%= product.title %></h3>        <!-- equal sign removed  -->
     <h2>
-      <% sanitize(product.description) %> <!-- equal sign removed  -->
+      <%= sanitize(product.description) %> <!-- equal sign removed  -->
     </h2>
 
     <div class="price_line">
-      <span class="price"><% number_to_currency(product.price) %></span> <!-- equal sign removed  -->
+      <span class="price"><%= number_to_currency(product.price) %></span> <!-- equal sign removed  -->
+      <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
     </div>
   </div>
 <% end %>
