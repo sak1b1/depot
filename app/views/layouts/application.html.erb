@@ -14,17 +14,31 @@
   <!--%= image_tag 'camera.png', alt: 'The Pragmatic Bookshelf' %-->
   <span class="title"><%= @page_title %></span>
 </div>
-<div id="columns">
-  <div class="topnav">
-    <%= link_to 'Home',store_index_path  %>
-    <%= link_to 'Products',products_url  %>
-    <%= link_to 'Cart', carts_url %>
 
-    <a href="#about">About</a>
-  </div>
-  <div id="main">
-    <%= yield %>
-  </div>
-</div>
+      <div id="columns">
+            <div class="topnav">
+              <%= link_to 'Home',store_index_path  %>
+              <%= link_to 'Products',products_url  %>
+              <%= link_to 'Cart', carts_url %>
+
+              <a href="#about">About</a>
+            </div>
+            <div id="main">
+              <%= yield %>
+            </div>
+      </div>
+
+      <div id="columns">
+        I am being generated from application layout
+        <div id="side">
+          <div id="cart">
+            <% if @cart %>
+             <%= render @cart %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
 </body>
 </html>
