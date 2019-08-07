@@ -2,6 +2,7 @@ class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
 
   before_destroy :ensure_not_referenced_by_any_line_item
+
   def add_product(product)
     current_item = line_items.find_by(product_id: product.id)
     if current_item
@@ -11,6 +12,19 @@ class Cart < ApplicationRecord
     end
     current_item
   end
+
+  def decrease_product(product)
+    current_item= line_items.find_by(prodcut_id: product.id)
+    if current_item
+      if current_item.quantity > 1
+        current_item.quantity -=1
+      else
+        line_items.destroy(product_id: product.id)
+      end
+    end
+    current_item
+  end
+
 
   def total_price
     line_items.to_a.sum { |item| item.total_price }

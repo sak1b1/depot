@@ -2,4 +2,26 @@
   <td><%= line_item.quantity %>&times;</td>
   <td><%= line_item.product.title %></td>
   <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+  <!--td> <%# line_item_path(line_item)+"?product_id=#{line_item.product.id}"%></td-->
+  <td> <%= line_item_path(line_item) %></td>
+  <td> <%= link_to "remove" %></td>
+<!--  <td> <%#= link_to "decrease", onclick: "decreaseItem(#{line_item.id})" %></td>-->
+  <td><button onclick="decreaseItem(<%= line_item.id %>)">Decrease</button></td>
+
 </tr>
+
+<%= content_for :head do %>
+  <script type="application/text">
+  function decreaseItem(line_item_id) {
+    console.log("EEREERE BALSAL");
+    $.ajax({
+        url: '/line_items/' + line_item_id,
+        method: 'PUT',
+        type: 'script',
+        success: function(data){
+            console.log(data);
+        }
+    })
+}
+</script>
+<% end %>

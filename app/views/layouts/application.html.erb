@@ -1,5 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="en">
+<script >
+  function decreaseItem(line_item_id) {
+    console.log("EEREERE BALSAL");
+    $.ajax({
+        url: '/line_items/' + line_item_id,
+        method: 'PUT',
+        type: 'script',
+        success: function(data){
+            console.log(data);
+        }
+    })
+}
+</script>
+
 <head>
   <title>Some random store</title>
   <%= csrf_meta_tags %>
@@ -31,14 +46,16 @@
       <div id="columns">
         I am being generated from application layout
         <div id="side">
-          <div id="cart">
-            <% if @cart %>
-             <%= render @cart %>
-            <% end %>
-          </div>
-        </div>
+          <div id="cart" >
+             <% if @cart%>
+                <%= hidden_div_if(@cart.line_items.empty? , id: 'cart') do %>
+                   <%= render @cart %>
+                <% end %>
+             <% end %>
 
-      </div>
+           </div>
+        </div>
+       </div>
 
 </body>
 </html>
