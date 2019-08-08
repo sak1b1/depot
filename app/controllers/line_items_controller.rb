@@ -45,7 +45,10 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1.json
   def update
     line_item= LineItem.find(params[:id])
-    Rails.logger.info "\n==== i'm from line_items_controller and #{line_item.inspect} ====\n"
+    Rails.logger.info "\n************line_item_controller************* #{line_item.inspect} and #{params[:id]} \n********************\n"
+    @line_item.decrease_product(line_item)
+
+
 =begin
     respond_to do |format|
       if @line_item.update(line_item_params)
@@ -63,7 +66,7 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     Rails.logger.info "\n=====i am from destroy method=====\n"
-    @line_item.destroy
+    #@line_item.destroy
     respond_to do |format|
       format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
       format.json { head :no_content }
