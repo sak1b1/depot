@@ -5,5 +5,5 @@
     <td><%= series.episode %></td>
     <td><%= link_to 'Show', series %></td>
     <td><%= link_to 'Edit', edit_series_path(series) %></td>
-    <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "delete"  %></td>
   </tr>
